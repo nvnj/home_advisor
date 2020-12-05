@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   flutter_screenutil: ^3.1.0
   stacked: ^1.2.2
+  intro_slider: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,7 @@ flutter:
     - lib/images/bottom_nav/
     - lib/images/logo/
     - lib/images/category_tile/
+    - assets/1/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

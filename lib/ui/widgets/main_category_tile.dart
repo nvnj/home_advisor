@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/ui/sub_category/sub_categ_view.dart';
 
 class MainCategoryTile extends StatelessWidget {
   final String name;
@@ -18,7 +19,9 @@ class MainCategoryTile extends StatelessWidget {
         height: 200.h,
         width: 350.w,
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, SubCategView.id);
+          },
           child: Card(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
