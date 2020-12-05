@@ -1,7 +1,6 @@
-import 'package:stacked/stacked.dart';
 import 'package:flutter/material.dart';
-
-import 'main_categ_view.dart';
+import 'package:home_advisor/ui/main_category/main_categ_view.dart';
+import 'package:stacked/stacked.dart';
 
 class HomePageViewModel extends IndexTrackingViewModel {
   String title = "hai";
