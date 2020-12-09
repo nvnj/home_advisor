@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import 'package:home_advisor/ui/complete_profile/complete_profile_view.dart';
 import 'package:home_advisor/ui/intro_slider/intro_slider_viewmodel.dart';
+import 'package:home_advisor/ui/otp_page/signin.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:stacked/stacked.dart';
 
 class IntroPage extends StatelessWidget {
-  static const id = "2";
+  static const id = "IntroPage";
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,
@@ -18,7 +18,7 @@ class IntroPage extends StatelessWidget {
         renderSkipBtn: model.renderDoneBtn(),
         renderDoneBtn: FlatButton(
           onPressed: () {
-            Navigator.pushNamed(context, CompleteProfile.id);
+            Navigator.pushNamed(context, SignInPage.id);
           },
           child: model.renderDoneBtn(),
         ),
