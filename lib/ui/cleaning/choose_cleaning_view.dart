@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
@@ -45,7 +44,9 @@ class ChooseCleaning extends StatelessWidget {
                         color: Colors.white,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                         child: Text(
                           _ChooseCleaningText.goback,
                           style: AppTextStyles.textStyle(
