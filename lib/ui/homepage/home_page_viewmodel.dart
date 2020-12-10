@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:home_advisor/ui/chatlist/chatlist.dart';
 import 'package:home_advisor/ui/main_category/main_categ_view.dart';
-import 'package:home_advisor/ui/orders_page/orders_page_view.dart';
 import 'package:stacked/stacked.dart';
 
 class HomePageViewModel extends IndexTrackingViewModel {
+  String title = "hai";
   String homeIcon = "lib/images/bottom_nav/home.png";
   String chatIcon = "lib/images/bottom_nav/chat.png";
   String orderIcon = "lib/images/bottom_nav/orders.png";
@@ -14,7 +14,7 @@ class HomePageViewModel extends IndexTrackingViewModel {
       case 0:
         return MainCategView();
       case 1:
-        return OrdersPage();
+        return Center(child: Text("Orders page"));
       case 2:
         return ChatList();
       case 3:

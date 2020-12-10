@@ -57,6 +57,7 @@ class MainCategView extends StatelessWidget {
                       childAspectRatio: (10 / 6),
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 20,
+                      // shrinkWrap: true,
                       crossAxisCount: 2,
                       children: List.generate(model.categ.length, (index) {
                         return MainCategoryTile(
