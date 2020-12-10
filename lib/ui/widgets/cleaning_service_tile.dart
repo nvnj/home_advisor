@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
+import 'package:home_advisor/app_theme/app_colors.dart';
+import 'package:home_advisor/app_theme/text_styles.dart';
 
 class CleaningTile extends StatelessWidget {
   final String url;
@@ -18,6 +20,7 @@ class CleaningTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           borderRadius: BorderRadius.circular(6),
           boxShadow: [
             BoxShadow(
@@ -31,16 +34,23 @@ class CleaningTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image(
-              image: NetworkImage(
+              image: CachedNetworkImageProvider(
                 "${url}",
               ),
             ),
-            SizedBox(height: 12),
+            SizedBox(height: 10),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 15,
+                vertical: 10,
+              ),
               child: Text(
                 "${catefgoryName}",
-                style: Theme.of(context).textTheme.body2,
+                style: AppTextStyles.textStyle(
+                  fontType: FontType.bold,
+                  color: AppColor.blCommon,
+                  size: 18,
+                ),
               ),
             ),
           ],

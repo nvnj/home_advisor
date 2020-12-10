@@ -1,31 +1,32 @@
 import 'package:home_advisor/models/cleaning_types.dart';
 
 class CleaningCategoryService {
-
-
-
-  List<CleaningCategory> getdifferrentTypesOfCleaningServices() {  
+  List<CleaningCategory> getdifferrentTypesOfCleaningServices() {
     List<CleaningCategory> cleaningTypes = [
       CleaningCategory(
         type: "floor cleaning",
         image:
-            "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
+            "https://biohomecares.com/wp-content/uploads/shutterstock_1013383711.jpg",
       ),
       CleaningCategory(
         type: "Kitchen Hood",
-        image: "https://images.unsplash.com/photo-1494548162494-384bba4ab999?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8NHx8fGVufDB8fHw%3D&w=1000&q=80",
+        image:
+            "https://marketingplatform.vivial.net/sites/default/files/inline_images/kahului-hi-cabinets-2.jpg",
       ),
       CleaningCategory(
-        type: "floor cleaning",
-        image: "https://i.pinimg.com/originals/ca/76/0b/ca760b70976b52578da88e06973af542.jpg",
+        type: "Furnitures and Carpets",
+        image:
+            "https://www.kiwiservices.com/images/furniture-upholstery-cleaning.jpg",
       ),
       CleaningCategory(
         type: "Wall Cleaning",
-        image: "https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg",
+        image:
+            "https://www.servicemasterclean.com/images/articles/4fc16fa6ab42461ca31221b759d5fa09.jpg",
       ),
       CleaningCategory(
         type: "Bathroom Cleaing",
-        image: "https://images.unsplash.com/photo-1503803548695-c2a7b4a5b875?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80",
+        image:
+            "https://www.thespruce.com/thmb/8LmztV1SC-YGc028Cxgw29VsCA8=/1885x1414/smart/filters:no_upscale()/Womancleaningbathroommirror-GettyImages-950404846-a9eea2b01ca1403eab7d8efe21bec073.jpg",
       ),
     ];
 
