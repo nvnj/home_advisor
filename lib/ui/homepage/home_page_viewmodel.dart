@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_advisor/ui/chatlist/chatlist.dart';
 import 'package:home_advisor/ui/main_category/main_categ_view.dart';
 import 'package:stacked/stacked.dart';
 
@@ -15,7 +16,7 @@ class HomePageViewModel extends IndexTrackingViewModel {
       case 1:
         return Center(child: Text("Orders page"));
       case 2:
-        return Center(child: Text("Chat page"));
+        return ChatList();
       case 3:
         return Center(child: Text("Profile page"));
       default:
