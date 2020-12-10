@@ -1,4 +1,4 @@
-import 'package:home_advisor/models/cleaning_types.dart';
+import 'package:home_advisor/core/models/cleaning_types.dart';
 
 class CleaningCategoryService {
   List<CleaningCategory> getdifferrentTypesOfCleaningServices() {

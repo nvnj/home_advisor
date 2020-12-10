@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:home_advisor/models/cleaning_types.dart';
-import 'package:home_advisor/services/cleaing_service..dart';
+import 'package:home_advisor/core/models/cleaning_types.dart';
+import 'package:home_advisor/core/services/cleaing_service..dart';
 import 'package:stacked/stacked.dart';
 
 class ChooseCleaningViewModel extends BaseViewModel {
