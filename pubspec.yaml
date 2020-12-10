@@ -31,6 +31,8 @@ dependencies:
   flutter_screenutil: ^3.1.0
   stacked: ^1.2.2
   intro_slider: ^2.3.3
+  country_code_picker: ^1.6.2
+  pin_entry_text_field: ^0.1.4
 
 dev_dependencies:
   flutter_test:

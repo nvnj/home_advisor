@@ -7,7 +7,7 @@ import 'package:stacked/stacked.dart';
 import 'sub_categ_viewmodel.dart';
 
 class SubCategView extends StatelessWidget {
-  static const id = "5";
+  static const id = "SubCategView";
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubCategViewModel>.reactive(
