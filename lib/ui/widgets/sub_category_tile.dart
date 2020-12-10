@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/ui/cleaning/choose_cleaning_view.dart';
 
 class SubCategoryTile extends StatelessWidget {
   final String name;
@@ -10,15 +11,28 @@ class SubCategoryTile extends StatelessWidget {
   SubCategoryTile({this.name, this.address});
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context,
-        designSize: Size(750, 1334), allowFontScaling: false);
+    ScreenUtil.init(
+      context,
+      designSize: Size(750, 1334),
+      allowFontScaling: false,
+    );
     return Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(80.w))),
+          borderRadius: BorderRadius.all(
+            Radius.circular(80.w),
+          ),
+        ),
         height: 200.h,
         width: 350.w,
         child: GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ChooseCleaning(),
+              ),
+            );
+          },
           child: Card(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,

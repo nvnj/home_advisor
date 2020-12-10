@@ -25,20 +25,22 @@ class SubCategView extends StatelessWidget {
             leadingWidth: double.infinity,
             leading: Column(
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        "Go Back",
-                        style: AppTextStyles.textStyle(size: 11),
+                Container(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
                       ),
-                    )
-                  ],
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          "Go Back",
+                          style: AppTextStyles.textStyle(size: 11),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Text(
                   "Maintenance",
