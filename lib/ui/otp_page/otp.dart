@@ -78,7 +78,7 @@ class _OtpPageState extends State<OtpPage> {
                             height: 100.h,
                             child: FlatButton(
                               onPressed: () {
-                                PhoneAuth().verifyOtp(sms);
+                                PhoneAuth().verifyOtp(sms, context);
                               },
                               child: Text(
                                 "CONFIRM",
