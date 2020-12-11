@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/services/api_services.dart';
+import 'package:home_advisor/ui/main_category/main_categ_model.dart';
 import 'package:home_advisor/ui/widgets/main_category_tile.dart';
 import 'package:stacked/stacked.dart';
 
@@ -53,17 +56,27 @@ class MainCategView extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: GridView.count(
-                      childAspectRatio: (10 / 6),
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 20,
-                      crossAxisCount: 2,
-                      children: List.generate(model.categ.length, (index) {
-                        return MainCategoryTile(
-                          name: model.categ[index][0],
-                          address: model.categ[index][1],
-                        );
-                      }),
+                    child: FutureBuilder(
+                      future: APIServices.getCateg("NKK"),
+                      builder: (_, AsyncSnapshot<MainCategResponse> snapshot) {
+                        if (snapshot.connectionState == ConnectionState.done &&
+                            snapshot.hasData) {
+                          List<MainCategory> categories = snapshot.data.results;
+                          return GridView.count(
+                            childAspectRatio: (10 / 6),
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 20,
+                            crossAxisCount: 2,
+                            children: List.generate(categories.length, (index) {
+                              return MainCategoryTile(
+                                name: categories[index].name,
+                                address: categories[index].icon,
+                              );
+                            }),
+                          );
+                        } else
+                          return Center(child: CircularProgressIndicator());
+                      },
                     ),
                   ),
                 )

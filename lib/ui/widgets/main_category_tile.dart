@@ -31,7 +31,7 @@ class MainCategoryTile extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
+                      Image.network(
                         address,
                         color: AppColor.blCommon,
                       ),
