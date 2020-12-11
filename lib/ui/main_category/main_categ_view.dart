@@ -57,7 +57,7 @@ class MainCategView extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: FutureBuilder(
-                      future: APIServices.getCateg("NKK"),
+                      future: APIServices.getCateg("homeadvisor"),
                       builder: (_, AsyncSnapshot<MainCategResponse> snapshot) {
                         if (snapshot.connectionState == ConnectionState.done &&
                             snapshot.hasData) {

@@ -1,41 +1,42 @@
 {
   "project_info": {
-    "project_number": "812148572396",
-    "project_id": "homeadvisor-51c08",
-    "storage_bucket": "homeadvisor-51c08.appspot.com"
+    "project_number": "395723707403",
+    "firebase_url": "https://karthi-test-e9ab1.firebaseio.com",
+    "project_id": "karthi-test-e9ab1",
+    "storage_bucket": "karthi-test-e9ab1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:812148572396:android:5c23272c3693a16e22a5c9",
+        "mobilesdk_app_id": "1:395723707403:android:4db0269b792961b3e2230e",
         "android_client_info": {
           "package_name": "com.home_advisor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "812148572396-7i6e18k731g8hoq0sp5dduu1hlt7ivpr.apps.googleusercontent.com",
+          "client_id": "395723707403-t28kopp9q5i9c0be3qretsbib4uin0rc.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.home_advisor",
-            "certificate_hash": "f109f5163da6a707552aa509bee3e91aeb99470a"
+            "certificate_hash": "78797e0ae112152c7e21d50235e7f3ba27b8733a"
           }
         },
         {
-          "client_id": "812148572396-fpseb5nhgcm3295831viovisfo8m1i9o.apps.googleusercontent.com",
+          "client_id": "395723707403-cvrddtjcab1pk47pi7an0uleiqna2mk5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBMoWPMDA44S8IsO1l-eKut4rc4aYdqf4g"
+          "current_key": "AIzaSyC8Um0qqdaSrFciYCDj9zGP7q6yqh2pFto"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "812148572396-fpseb5nhgcm3295831viovisfo8m1i9o.apps.googleusercontent.com",
+              "client_id": "395723707403-cvrddtjcab1pk47pi7an0uleiqna2mk5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
