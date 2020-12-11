@@ -5,7 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'home_page_viewmodel.dart';
 
 class HomePageView extends StatelessWidget {
-  static const id = "4";
+  static const id = "HomePage";
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomePageViewModel>.reactive(

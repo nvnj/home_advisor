@@ -7,7 +7,7 @@ import 'package:stacked/stacked.dart';
 import 'sub_categ_viewmodel.dart';
 
 class SubCategView extends StatelessWidget {
-  static const id = "5";
+  static const id = "SubCategView";
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubCategViewModel>.reactive(
@@ -25,20 +25,22 @@ class SubCategView extends StatelessWidget {
             leadingWidth: double.infinity,
             leading: Column(
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.arrow_back,
-                      color: Colors.white,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        "Go Back",
-                        style: AppTextStyles.textStyle(size: 11),
+                Container(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
                       ),
-                    )
-                  ],
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          "Go Back",
+                          style: AppTextStyles.textStyle(size: 11),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Text(
                   "Maintenance",

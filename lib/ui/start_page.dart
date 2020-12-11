@@ -5,7 +5,7 @@ import 'package:home_advisor/app_theme/screen_util-extension.dart';
 import 'package:home_advisor/ui/intro_slider/intro_page_view.dart';
 
 class StartPage extends StatelessWidget {
-  static const id = "1";
+  static const id = "StartPage";
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,
