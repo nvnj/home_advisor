@@ -33,6 +33,7 @@ dependencies:
   firebase_core: "^0.5.3"
   firebase_auth: "^0.18.4"
   stacked: ^1.2.2
+  provider:
   intro_slider: ^2.3.3
   country_code_picker: ^1.6.2
   pin_entry_text_field: ^0.1.4

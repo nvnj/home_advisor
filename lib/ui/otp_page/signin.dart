@@ -1,35 +1,25 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:home_advisor/app/locator.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/services/auth/firebase_auth_service.dart';
-import 'package:home_advisor/ui/otp_page/otp.dart';
+import 'package:home_advisor/ui/otp_page/phone_auth.dart';
 
 class AppStrings {
   static String header = "Welcome Back\nHome Advisor";
   static String phoneHint = "Enter Your phone Numer";
   static String phoneErrorLen = "Phonenumber Should be 10 digits";
   static String phoneErrorEmpty = "Please Enter a number";
-  static String header2 = "Enter OTP Received";
 }
 
-class SignInPage extends StatefulWidget {
-  static const String id = "SignInPage";
-  @override
-  _SignInPageState createState() => _SignInPageState();
-}
+class SignInPage extends StatelessWidget {
+  static const id = "signin_page";
+  String code;
 
-class _SignInPageState extends State<SignInPage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController controller = new TextEditingController();
-  final FirebaseAuthService _firebaseAuthService =
-      locator<FirebaseAuthService>();
 
-  final _phFormKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +55,18 @@ class _SignInPageState extends State<SignInPage> {
                       Row(
                         children: [
                           CountryCodePicker(
-                            onChanged: (countryCode) {},
+                            onInit: (countryCode) {
+                              code = countryCode.toString();
+                            },
+                            initialSelection: "+91",
+                            onChanged: (countryCode) {
+                              code = countryCode.toString();
+                            },
                           ),
                           SizedBox(width: 10.0),
                           Expanded(
                             child: Form(
-                              key: _phFormKey,
+                              key: _formKey,
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   hintText: AppStrings.phoneHint,
@@ -85,8 +81,9 @@ class _SignInPageState extends State<SignInPage> {
                                     return null;
                                   }
                                 },
+                                controller: controller,
                                 onChanged: (value) {
-                                  _phFormKey.currentState.validate();
+                                  _formKey.currentState.validate();
                                 },
                               ),
                             ),
@@ -113,14 +110,10 @@ class _SignInPageState extends State<SignInPage> {
                             height: 100.h,
                             child: FlatButton(
                               onPressed: () {
-                                if (_phFormKey.currentState.validate()) {
-                                  verifyPhone();
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => OtpPage(),
-                                  //   ),
-                                  // );
+                                if (_formKey.currentState.validate()) {
+                                  var no = controller.text.trim();
+                                  print("+91$no");
+                                  PhoneAuth().verifyPhone("+91$no", context);
                                 }
                               },
                               child: Text(
@@ -142,8 +135,4 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
-
-  void verifyPhone() async {}
-
-  void signInWithPhone() async {}
 }
