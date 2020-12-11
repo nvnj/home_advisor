@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/ui/complete_profile/complete_profile_view.dart';
+import 'package:home_advisor/ui/otp_page/phone_auth.dart';
 import 'package:pin_entry_text_field/pin_entry_text_field.dart';
 
 class OtpStrings {
@@ -11,6 +11,7 @@ class OtpStrings {
 }
 
 class OtpPage extends StatefulWidget {
+  static const id = "otp_page";
   @override
   _OtpPageState createState() => _OtpPageState();
 }
@@ -19,6 +20,8 @@ class _OtpPageState extends State<OtpPage> {
   TextEditingController controller = new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  String sms;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,10 @@ class _OtpPageState extends State<OtpPage> {
                         ).copyWith(fontSize: 30),
                       ),
                       PinEntryTextField(
-                        fields: 5,
+                        fields: 6,
+                        onSubmit: (code) {
+                          sms = code;
+                        },
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -72,8 +78,7 @@ class _OtpPageState extends State<OtpPage> {
                             height: 100.h,
                             child: FlatButton(
                               onPressed: () {
-                                Navigator.pushNamed(
-                                    context, CompleteProfile.id);
+                                PhoneAuth().verifyOtp(sms);
                               },
                               child: Text(
                                 "CONFIRM",

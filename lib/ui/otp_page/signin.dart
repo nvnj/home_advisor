@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/ui/otp_page/otp.dart';
+import 'package:home_advisor/ui/otp_page/phone_auth.dart';
 
 class AppStrings {
   static String header = "Welcome Back\nHome Advisor";
@@ -13,13 +13,10 @@ class AppStrings {
   static String phoneErrorEmpty = "Please Enter a number";
 }
 
-class SignInPage extends StatefulWidget {
-  static const String id = "SignInPage";
-  @override
-  _SignInPageState createState() => _SignInPageState();
-}
+class SignInPage extends StatelessWidget {
+  static const id = "signin_page";
+  String code;
 
-class _SignInPageState extends State<SignInPage> {
   TextEditingController controller = new TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
@@ -58,7 +55,13 @@ class _SignInPageState extends State<SignInPage> {
                       Row(
                         children: [
                           CountryCodePicker(
-                            onChanged: (countryCode) {},
+                            onInit: (countryCode) {
+                              code = countryCode.toString();
+                            },
+                            initialSelection: "+91",
+                            onChanged: (countryCode) {
+                              code = countryCode.toString();
+                            },
                           ),
                           SizedBox(width: 10.0),
                           Expanded(
@@ -108,12 +111,9 @@ class _SignInPageState extends State<SignInPage> {
                             child: FlatButton(
                               onPressed: () {
                                 if (_formKey.currentState.validate()) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => OtpPage(),
-                                    ),
-                                  );
+                                  var no = controller.text.trim();
+                                  print("+91$no");
+                                  PhoneAuth().verifyPhone("+91$no",context);
                                 }
                               },
                               child: Text(
