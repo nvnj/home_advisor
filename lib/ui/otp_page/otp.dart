@@ -18,8 +18,6 @@ class OtpPage extends StatefulWidget {
 class _OtpPageState extends State<OtpPage> {
   TextEditingController controller = new TextEditingController();
 
-  final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -51,7 +49,8 @@ class _OtpPageState extends State<OtpPage> {
                         ).copyWith(fontSize: 30),
                       ),
                       PinEntryTextField(
-                        fields: 5,
+                        fields: 6,
+                        
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

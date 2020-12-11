@@ -1,9 +1,12 @@
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:home_advisor/app/locator.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/services/auth/firebase_auth_service.dart';
 import 'package:home_advisor/ui/otp_page/otp.dart';
 
 class AppStrings {
@@ -11,6 +14,7 @@ class AppStrings {
   static String phoneHint = "Enter Your phone Numer";
   static String phoneErrorLen = "Phonenumber Should be 10 digits";
   static String phoneErrorEmpty = "Please Enter a number";
+  static String header2 = "Enter OTP Received";
 }
 
 class SignInPage extends StatefulWidget {
@@ -20,9 +24,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController controller = new TextEditingController();
+  final FirebaseAuthService _firebaseAuthService =
+      locator<FirebaseAuthService>();
 
-  final _formKey = GlobalKey<FormState>();
+  final _phFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
                           SizedBox(width: 10.0),
                           Expanded(
                             child: Form(
-                              key: _formKey,
+                              key: _phFormKey,
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   hintText: AppStrings.phoneHint,
@@ -78,9 +85,8 @@ class _SignInPageState extends State<SignInPage> {
                                     return null;
                                   }
                                 },
-                                controller: controller,
                                 onChanged: (value) {
-                                  _formKey.currentState.validate();
+                                  _phFormKey.currentState.validate();
                                 },
                               ),
                             ),
@@ -107,13 +113,14 @@ class _SignInPageState extends State<SignInPage> {
                             height: 100.h,
                             child: FlatButton(
                               onPressed: () {
-                                if (_formKey.currentState.validate()) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => OtpPage(),
-                                    ),
-                                  );
+                                if (_phFormKey.currentState.validate()) {
+                                  verifyPhone();
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => OtpPage(),
+                                  //   ),
+                                  // );
                                 }
                               },
                               child: Text(
@@ -135,4 +142,8 @@ class _SignInPageState extends State<SignInPage> {
       ),
     );
   }
+
+  void verifyPhone() async {}
+
+  void signInWithPhone() async {}
 }
