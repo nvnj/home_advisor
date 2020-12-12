@@ -1,6 +1,24 @@
+import 'package:home_advisor/app/locator.dart';
+import 'package:home_advisor/services/auth/firebase_auth_service.dart';
 import 'package:stacked/stacked.dart';
 
 class MainCategViewModel extends BaseViewModel {
+  FirebaseAuthService _authService = locator<FirebaseAuthService>();
+  String token;
+
+  void iniToken() async {
+    var response = await _authService.firebaseAuth.currentUser.getIdToken();
+    if (response != null) {
+      token = response;
+      print(token);
+      notifyListeners();
+    }
+  }
+
+  void initState() {
+    iniToken();
+  }
+
   String logo = "lib/images/logo/logo.png";
   List<List<String>> categ = [
     ["Engineering", "lib/images/category_tile/pic2.png"],

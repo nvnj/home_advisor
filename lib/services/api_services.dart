@@ -9,15 +9,15 @@ class URLS {
 
 class APIServices {
   static Future<MainCategResponse> getCateg(String token) async {
-    final response = await http.get('${URLS.baseURL}/category/', headers: {
+    final response = await http.get('${URLS.baseURL}category', headers: {
       'Content-Type': 'application/json',
       'Authorization': "Bearer $token",
     });
-    print(response.toString());
 
     if (response.statusCode == 200) {
-      return MainCategResponse.fromJson(response);
+      return MainCategResponse.fromJson(response.body);
     } else {
+      print(" hi nidhin");
       return null;
     }
   }

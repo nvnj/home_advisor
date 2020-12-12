@@ -34,15 +34,17 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  initState() {
+  initState(BuildContext context) {
     _authService.onPhoneAuthenticationStepChanged.listen((event) {
       if (currentStep == PhoneAuthenticationSteps.AUTHENTICATION_SUCCESS)
-        return;
+        authSucessAction(context);
       currentStep = event;
     });
   }
 
   String _phoneNumber;
+
+  String _otp;
 
   bool _isOtpRequested = false;
 
@@ -60,6 +62,13 @@ class LoginViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  String get otp => _otp;
+
+  set otp(String value) {
+    _otp = value;
+    notifyListeners();
+  }
+
   bool _isMobileNoValid = false;
 
   bool get isMobileNoValid => _isMobileNoValid;
@@ -74,7 +83,7 @@ class LoginViewModel extends BaseViewModel {
     _authService.signInWithPhone(phoneNumber);
   }
 
-  void validateOtp(String otp) {
+  void validateOtp() {
     print(otp);
     _authService.validatePhoneOtp(otp);
   }
@@ -128,10 +137,14 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future<void> buttonAction(BuildContext context) async {
-    if (currentStep == PhoneAuthenticationSteps.CODE_SENT ||
-        currentStep == PhoneAuthenticationSteps.INIT) {
+    if (currentStep == PhoneAuthenticationSteps.INIT) {
       validatePhone();
+    } else if (currentStep == PhoneAuthenticationSteps.INVALID_OTP_ENTERED ||
+        currentStep == PhoneAuthenticationSteps.CODE_SENT ||
+        currentStep == PhoneAuthenticationSteps.AUTHENTICATION_SUCCESS) {
+      validateOtp();
     } else if (currentStep == PhoneAuthenticationSteps.AUTHENTICATION_FAILED ||
+        currentStep == PhoneAuthenticationSteps.AUTO_RETRIVAL_TIMEOUT ||
         currentStep ==
             PhoneAuthenticationSteps.AUTHENTICATION_FAILED_NETWWORK) {
       validatePhone();

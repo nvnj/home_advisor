@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/services/api_services.dart';
@@ -13,6 +12,7 @@ class MainCategView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainCategViewModel>.reactive(
+      onModelReady: (model) => model.initState(),
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
             actions: [
@@ -56,28 +56,39 @@ class MainCategView extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: FutureBuilder(
-                      future: APIServices.getCateg("homeadvisor"),
-                      builder: (_, AsyncSnapshot<MainCategResponse> snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done &&
-                            snapshot.hasData) {
-                          List<MainCategory> categories = snapshot.data.results;
-                          return GridView.count(
-                            childAspectRatio: (10 / 6),
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 20,
-                            crossAxisCount: 2,
-                            children: List.generate(categories.length, (index) {
-                              return MainCategoryTile(
-                                name: categories[index].name,
-                                address: categories[index].icon,
-                              );
-                            }),
-                          );
-                        } else
-                          return Center(child: CircularProgressIndicator());
-                      },
-                    ),
+                    child: model.token != null
+                        ? FutureBuilder(
+                            future: APIServices.getCateg(model.token),
+                            builder:
+                                (_, AsyncSnapshot<MainCategResponse> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                print(snapshot.data.toString());
+                                List<MainCategory> categories =
+                                    snapshot.data.results;
+                                return GridView.count(
+                                  childAspectRatio: (10 / 6),
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 20,
+                                  crossAxisCount: 2,
+                                  children:
+                                      List.generate(categories.length, (index) {
+                                    return MainCategoryTile(
+                                      name: categories[index].name,
+                                      address: categories[index].icon,
+                                    );
+                                  }),
+                                );
+                              } else {
+                                print(
+                                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                            },
+                          )
+                        : Center(child: CircularProgressIndicator()),
                   ),
                 )
               ],

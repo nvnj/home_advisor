@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
-      onModelReady: (model)=>model.initState(),
+      onModelReady: (model) => model.initState(context),
       builder: (context, model, child) => Scaffold(
         body: _Body(),
       ),
@@ -100,10 +100,11 @@ class _OtpInput extends ViewModelWidget<LoginViewModel> {
       enableActiveFill: true,
       onCompleted: (otp) {
         print("Completed");
-        model.validateOtp(otp);
+        model.validateOtp();
       },
       onChanged: (value) {
         print(value);
+        model.otp = value;
       },
       beforeTextPaste: (text) {
         print("Allowing to paste $text");
