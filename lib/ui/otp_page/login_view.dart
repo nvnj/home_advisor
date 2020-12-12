@@ -61,7 +61,7 @@ class _Body extends ViewModelWidget<LoginViewModel> {
                   height: 100.h,
                   child: FlatButton(
                     onPressed: () {
-                      if (model.isMobileNoValid) model.validatePhone();
+                      if (model.isMobileNoValid) model.buttonAction(context);
                     },
                     child: Text(
                       model.getButtonText(),

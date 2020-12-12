@@ -22,6 +22,8 @@ class FirebaseAuthService implements AuthService {
         phone: user.phoneNumber);
   }
 
+  FirebaseAuth get firebaseAuth => _firebaseAuth;
+
   @override
   Future<AuthUser> currentUser() {
     return Future.value(_userFromFirebase(_firebaseAuth.currentUser));
@@ -46,13 +48,13 @@ class FirebaseAuthService implements AuthService {
     _currentStep = PhoneAuthenticationSteps.CODE_SENT;
     _updatePhoneAuthStep();
     await _firebaseAuth.verifyPhoneNumber(
-        phoneNumber: phone,
+        phoneNumber: "+91" + phone,
         timeout: Duration(seconds: 60),
         verificationCompleted: _phoneVerificationCompleted,
         verificationFailed: _phoneVerificationFailed,
         codeSent: _phoneCodeSent,
         codeAutoRetrievalTimeout: _phoneCodeAutoRetrievalTimeout);
-    print("signInWithPhone End");
+    print("Phone Authentication Ended");
     return null;
   }
 
@@ -90,6 +92,7 @@ class FirebaseAuthService implements AuthService {
 
   StreamController<PhoneAuthenticationSteps> _phoneAuthController =
       StreamController<PhoneAuthenticationSteps>.broadcast(sync: true);
+
   @override
   Stream<PhoneAuthenticationSteps> get onPhoneAuthenticationStepChanged =>
       _phoneAuthController.stream;
