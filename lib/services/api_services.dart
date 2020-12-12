@@ -15,7 +15,7 @@ class APIServices {
     });
 
     if (response.statusCode == 200) {
-      return MainCategResponse.fromJson(response.body);
+      return MainCategResponse.fromJson(jsonDecode(response.body));
     } else {
       print(" hi nidhin");
       return null;
