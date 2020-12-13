@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/ui/cleaning/choose_cleaning_view.dart';
+import 'package:home_advisor/ui/service_page/services_page_view.dart';
 
 class SubCategoryTile extends StatelessWidget {
   final String name;
@@ -29,7 +29,7 @@ class SubCategoryTile extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ChooseCleaning(),
+                builder: (context) => ServicesPage(),
               ),
             );
           },

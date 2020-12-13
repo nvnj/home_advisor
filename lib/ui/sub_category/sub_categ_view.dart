@@ -21,6 +21,7 @@ class SubCategView extends StatelessWidget {
       onModelReady: (model) => model.initState(),
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
+            toolbarHeight: 66,
             actions: [
               Container(
                 margin: EdgeInsets.only(right: 5),
@@ -34,22 +35,22 @@ class SubCategView extends StatelessWidget {
             leading: Column(
               children: [
                 Container(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                        Text(
                           "Go Back",
                           style: AppTextStyles.textStyle(size: 11),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Text(
@@ -112,15 +113,17 @@ class SubCategView extends StatelessWidget {
                                   crossAxisCount: 2,
                                   children:
                                       List.generate(categories.length, (index) {
-                                    return SubCategoryTile(
-                                      name: categories[index].name,
-                                      address: categories[index].icon,
-                                    );
+                                    if (categories[index].category.id ==
+                                        categId) {
+                                      return SubCategoryTile(
+                                        name: categories[index].name,
+                                        address: categories[index].icon,
+                                      );
+                                    }
+                                    return SizedBox();
                                   }),
                                 );
                               } else {
-                                print(
-                                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                                 return Center(
                                     child: CircularProgressIndicator());
                               }

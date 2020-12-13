@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/ui/cleaning/choose_cleaning_view_model.dart';
+import 'package:home_advisor/ui/service_page/services_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/cleaning_service_tile.dart';
 import 'package:stacked/stacked.dart';
 
@@ -11,13 +11,13 @@ class _ChooseCleaningText {
   static String chooseCategory = "Choose From Cleaning";
 }
 
-class ChooseCleaning extends StatelessWidget {
-  const ChooseCleaning({Key key}) : super(key: key);
+class ServicesPage extends StatelessWidget {
+  const ServicesPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder.reactive(
-      viewModelBuilder: () => ChooseCleaningViewModel(),
+      viewModelBuilder: () => ServicesPageViewModel(),
       onModelReady: (model) {
         model.getDiffrentCategoryOfService();
       },
