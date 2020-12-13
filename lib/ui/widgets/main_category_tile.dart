@@ -8,7 +8,10 @@ import 'package:home_advisor/ui/sub_category/sub_categ_view.dart';
 class MainCategoryTile extends StatelessWidget {
   final String name;
   final String address;
-  MainCategoryTile({this.name, this.address});
+
+  final String title;
+  final int categId;
+  MainCategoryTile({this.name, this.address, this.title, this.categId});
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,
@@ -20,7 +23,9 @@ class MainCategoryTile extends StatelessWidget {
         width: 350.w,
         child: GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, SubCategView.id);
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    SubCategView(categId: categId, title: title)));
           },
           child: Card(
             child: Row(

@@ -11,8 +11,9 @@ import 'sub_categ_viewmodel.dart';
 class SubCategView extends StatelessWidget {
   static const id = "SubCategView";
 
-  String title;
-  int index;
+  final String title;
+  final int categId;
+  SubCategView({this.categId, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class SubCategView extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Maintenance",
+                  title,
                   style: AppTextStyles.textStyle(
                       size: 18, fontType: FontType.regular),
                 )
@@ -101,7 +102,7 @@ class SubCategView extends StatelessWidget {
                               if (snapshot.connectionState ==
                                       ConnectionState.done &&
                                   snapshot.hasData) {
-                                print(snapshot.data.toString());
+                                print(snapshot.data.results[1].category.id);
                                 List<SubCateg> categories =
                                     snapshot.data.results;
                                 return GridView.count(

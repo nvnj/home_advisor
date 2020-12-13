@@ -77,6 +77,8 @@ class MainCategView extends StatelessWidget {
                                     return MainCategoryTile(
                                       name: categories[index].name,
                                       address: categories[index].icon,
+                                      title: categories[index].name,
+                                      categId: categories[index].id,
                                     );
                                   }),
                                 );
