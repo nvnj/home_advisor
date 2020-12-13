@@ -1,16 +1,21 @@
-import 'dart:developer';
-
-import 'package:home_advisor/core/models/service_types.dart';
-import 'package:home_advisor/core/services/category_service..dart';
+import 'package:home_advisor/app/locator.dart';
+import 'package:home_advisor/services/auth/firebase_auth_service.dart';
 import 'package:stacked/stacked.dart';
 
 class ServicesPageViewModel extends BaseViewModel {
-  List<ServicesCategory> _servicesTypes = [];
+  FirebaseAuthService _authService = locator<FirebaseAuthService>();
+  String token;
 
-  List<ServicesCategory> get categories => _servicesTypes;
+  void iniToken() async {
+    var response = await _authService.firebaseAuth.currentUser.getIdToken();
+    if (response != null) {
+      token = response;
+      print(token);
+      notifyListeners();
+    }
+  }
 
-  List<ServicesCategory> getDiffrentCategoryOfService() {
-    _servicesTypes.addAll(CategoryService().getdifferrentTypesOfServices());
-    notifyListeners();
+  void initState() {
+    iniToken();
   }
 }

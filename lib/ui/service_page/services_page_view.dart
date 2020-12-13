@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/services/api_services.dart';
 import 'package:home_advisor/ui/service_page/services_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/service_tile.dart';
 import 'package:stacked/stacked.dart';
 
+import 'services_page_model.dart';
+
 class ServicesPage extends StatelessWidget {
-  const ServicesPage({Key key}) : super(key: key);
+  final String title;
+  final int categId;
+  ServicesPage({this.categId, this.title});
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder.reactive(
-      viewModelBuilder: () => ServicesPageViewModel(),
-      onModelReady: (model) {
-        model.getDiffrentCategoryOfService();
-      },
-      builder: (context, model, child) {
-        return Scaffold(
+    return ViewModelBuilder<ServicesPageViewModel>.reactive(
+      onModelReady: (model) => model.initState(),
+      builder: (context, model, child) => Scaffold(
           appBar: AppBar(
+            toolbarHeight: 66,
             actions: [
               Container(
                 margin: EdgeInsets.only(right: 5),
@@ -31,75 +33,119 @@ class ServicesPage extends StatelessWidget {
             leadingWidth: double.infinity,
             leading: Column(
               children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Text(
-                          "Go back",
-                          style: AppTextStyles.textStyle(
-                            size: 11,
-                          ),
+                Container(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
                         ),
-                      )
-                    ],
+                        Text(
+                          "Go Back",
+                          style: AppTextStyles.textStyle(size: 11),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      bottom: 10.0,
-                    ),
-                    child: Text(
-                      "Choose From Cleaning",
-                      style: AppTextStyles.textStyle(
-                        size: 12,
-                      ),
-                    ),
-                  ),
+                Text(
+                  "title",
+                  style: AppTextStyles.textStyle(
+                      size: 18, fontType: FontType.regular),
                 )
               ],
             ),
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    AppColor.blGradient2,
-                    AppColor.blGradient1,
-                  ],
-                ),
-              ),
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [AppColor.blGradient2, AppColor.blGradient1])),
             ),
             elevation: 1,
           ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: StaggeredGridView.countBuilder(
-              crossAxisCount: 4,
-              itemCount: model.categories.length,
-              itemBuilder: (BuildContext context, int index) => ServicesTile(
-                categoryName: model.categories.elementAt(index).type,
-                url: model.categories.elementAt(index).image,
-                onTap: () {},
-              ),
-              staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-              mainAxisSpacing: 15.0,
-              crossAxisSpacing: 15.0,
+          body: Container(
+            color: Colors.white,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "Choose your Category",
+                      style: AppTextStyles.textStyle(
+                          color: AppColor.blCommon,
+                          fontType: FontType.bold,
+                          size: 15),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: model.token != null
+                        ? FutureBuilder(
+                            future: APIServices.getServices(model.token),
+                            builder:
+                                (_, AsyncSnapshot<ServicesPageModel> snapshot) {
+                              print(snapshot.data);
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                print(snapshot.data.results[1].name);
+                                List<Serve> services = snapshot.data.results;
+                                return StaggeredGridView.countBuilder(
+                                  crossAxisCount: 4,
+                                  itemCount: services.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) =>
+                                          ServicesTile(
+                                    categoryName: services[index].name,
+                                    url: services[index].icon,
+                                    onTap: () {},
+                                  ),
+                                  staggeredTileBuilder: (int index) =>
+                                      new StaggeredTile.fit(2),
+                                  mainAxisSpacing: 15.0,
+                                  crossAxisSpacing: 15.0,
+                                );
+                              } else {
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                            },
+                          )
+                        : Center(child: CircularProgressIndicator()),
+                  ),
+                )
+              ],
             ),
-          ),
-        );
-      },
+          )),
+      viewModelBuilder: () => ServicesPageViewModel(),
     );
   }
 }
+
+//StaggeredGridView.countBuilder(
+//crossAxisCount: 4,
+//itemCount: model.categories.length,
+//itemBuilder: (BuildContext context, int index) => ServicesTile(
+//categoryName: model.categories.elementAt(index).type,
+//url: model.categories.elementAt(index).image,
+//onTap: () {},
+//),
+//staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
+//mainAxisSpacing: 15.0,
+//crossAxisSpacing: 15.0,
+//),
