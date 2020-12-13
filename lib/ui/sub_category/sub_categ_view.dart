@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
+import 'package:home_advisor/services/api_services.dart';
 import 'package:home_advisor/ui/widgets/sub_category_tile.dart';
 import 'package:stacked/stacked.dart';
 
+import 'sub_categ_model.dart';
 import 'sub_categ_viewmodel.dart';
 
 class SubCategView extends StatelessWidget {
   static const id = "SubCategView";
+
+  String title;
+  int index;
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SubCategViewModel>.reactive(
+      onModelReady: (model) => model.initState(),
       builder: (context, model, child) => Scaffold(
           appBar: AppBar(
             actions: [
@@ -33,7 +40,9 @@ class SubCategView extends StatelessWidget {
                         color: Colors.white,
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                         child: Text(
                           "Go Back",
                           style: AppTextStyles.textStyle(size: 11),
@@ -84,18 +93,39 @@ class SubCategView extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: GridView.count(
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 20,
-                      // shrinkWrap: true,
-                      crossAxisCount: 2,
-                      children: List.generate(model.categ.length, (index) {
-                        return SubCategoryTile(
-                          name: model.categ[index][0],
-                          address: model.categ[index][1],
-                        );
-                      }),
-                    ),
+                    child: model.token != null
+                        ? FutureBuilder(
+                            future: APIServices.getSubCateg(model.token),
+                            builder:
+                                (_, AsyncSnapshot<SubCategModel> snapshot) {
+                              if (snapshot.connectionState ==
+                                      ConnectionState.done &&
+                                  snapshot.hasData) {
+                                print(snapshot.data.toString());
+                                List<SubCateg> categories =
+                                    snapshot.data.results;
+                                return GridView.count(
+                                  childAspectRatio: (10 / 6),
+                                  crossAxisSpacing: 10,
+                                  mainAxisSpacing: 20,
+                                  crossAxisCount: 2,
+                                  children:
+                                      List.generate(categories.length, (index) {
+                                    return SubCategoryTile(
+                                      name: categories[index].name,
+                                      address: categories[index].icon,
+                                    );
+                                  }),
+                                );
+                              } else {
+                                print(
+                                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                                return Center(
+                                    child: CircularProgressIndicator());
+                              }
+                            },
+                          )
+                        : Center(child: CircularProgressIndicator()),
                   ),
                 )
               ],

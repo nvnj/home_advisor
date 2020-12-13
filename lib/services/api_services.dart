@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:home_advisor/ui/main_category/main_categ_model.dart';
+import 'package:home_advisor/ui/sub_category/sub_categ_model.dart';
 import 'package:http/http.dart' as http;
 
 class URLS {
@@ -22,11 +23,17 @@ class APIServices {
     }
   }
 
-  static Future<List<dynamic>> getSubCateg() async {
-    final response = await http.get('${URLS.baseURL}/subcategory');
+  static Future<SubCategModel> getSubCateg(String token) async {
+    final response = await http.get('${URLS.baseURL}subcategory', headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
+
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      print(response.statusCode);
+      return SubCategModel.fromJson(jsonDecode(response.body));
     } else {
+      print(" hi nidhin");
       return null;
     }
   }
