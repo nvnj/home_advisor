@@ -37,4 +37,18 @@ class APIServices {
       return null;
     }
   }
+
+  static Future<SubCategModel> getServices(String token) async {
+    final response = await http.get('${URLS.baseURL}service', headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer $token",
+    });
+
+    if (response.statusCode == 200) {
+      print(response.statusCode);
+      return SubCategModel.fromJson(jsonDecode(response.body));
+    } else {
+      return null;
+    }
+  }
 }

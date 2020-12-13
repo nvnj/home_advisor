@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 
-class CleaningTile extends StatelessWidget {
+class ServicesTile extends StatelessWidget {
   final String url;
-  final String catefgoryName;
+  final String categoryName;
   final Function onTap;
-  const CleaningTile({
-    this.catefgoryName,
+  const ServicesTile({
+    this.categoryName,
     this.url,
     key,
     this.onTap,
@@ -45,7 +45,7 @@ class CleaningTile extends StatelessWidget {
                 vertical: 10,
               ),
               child: Text(
-                "${catefgoryName}",
+                "${categoryName}",
                 style: AppTextStyles.textStyle(
                   fontType: FontType.bold,
                   color: AppColor.blCommon,

@@ -3,13 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/ui/service_page/services_page_view_model.dart';
-import 'package:home_advisor/ui/widgets/cleaning_service_tile.dart';
+import 'package:home_advisor/ui/widgets/service_tile.dart';
 import 'package:stacked/stacked.dart';
-
-class _ChooseCleaningText {
-  static String goback = "Go back";
-  static String chooseCategory = "Choose From Cleaning";
-}
 
 class ServicesPage extends StatelessWidget {
   const ServicesPage({Key key}) : super(key: key);
@@ -21,7 +16,7 @@ class ServicesPage extends StatelessWidget {
       onModelReady: (model) {
         model.getDiffrentCategoryOfService();
       },
-      builder: (contex, model, child) {
+      builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
             actions: [
@@ -48,7 +43,7 @@ class ServicesPage extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         child: Text(
-                          _ChooseCleaningText.goback,
+                          "Go back",
                           style: AppTextStyles.textStyle(
                             size: 11,
                           ),
@@ -65,7 +60,7 @@ class ServicesPage extends StatelessWidget {
                       bottom: 10.0,
                     ),
                     child: Text(
-                      _ChooseCleaningText.chooseCategory,
+                      "Choose From Cleaning",
                       style: AppTextStyles.textStyle(
                         size: 12,
                       ),
@@ -93,8 +88,8 @@ class ServicesPage extends StatelessWidget {
             child: StaggeredGridView.countBuilder(
               crossAxisCount: 4,
               itemCount: model.categories.length,
-              itemBuilder: (BuildContext context, int index) => CleaningTile(
-                catefgoryName: model.categories.elementAt(index).type,
+              itemBuilder: (BuildContext context, int index) => ServicesTile(
+                categoryName: model.categories.elementAt(index).type,
                 url: model.categories.elementAt(index).image,
                 onTap: () {},
               ),
