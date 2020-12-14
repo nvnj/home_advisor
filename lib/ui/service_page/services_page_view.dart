@@ -149,16 +149,3 @@ class ServicesPage extends StatelessWidget {
     );
   }
 }
-
-//StaggeredGridView.countBuilder(
-//crossAxisCount: 4,
-//itemCount: model.categories.length,
-//itemBuilder: (BuildContext context, int index) => ServicesTile(
-//categoryName: model.categories.elementAt(index).type,
-//url: model.categories.elementAt(index).image,
-//onTap: () {},
-//),
-//staggeredTileBuilder: (int index) => new StaggeredTile.fit(2),
-//mainAxisSpacing: 15.0,
-//crossAxisSpacing: 15.0,
-//),

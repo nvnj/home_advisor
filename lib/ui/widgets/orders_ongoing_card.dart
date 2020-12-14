@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/app_theme/screen_util-extension.dart';
+import 'package:home_advisor/ui/pay_milestone/pay_milestone_view.dart';
 
 class OrdersOnGCard extends StatelessWidget {
   final String seriel;
@@ -90,7 +91,9 @@ class OrdersOnGCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, PayMilestonePage.id);
+                    },
                     child: Text(
                       "View Pay Milestones",
                       style: AppTextStyles.textStyle(

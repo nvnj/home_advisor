@@ -2,16 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:home_advisor/app/locator.dart';
-import 'package:home_advisor/services/auth.dart';
+
 import 'package:home_advisor/ui/complete_profile/complete_profile_view.dart';
 import 'package:home_advisor/ui/homepage/home_page_view.dart';
 import 'package:home_advisor/ui/intro_slider/intro_page_view.dart';
 import 'package:home_advisor/ui/otp_page/login_view.dart';
 import 'package:home_advisor/ui/otp_page/otp.dart';
-import 'package:home_advisor/ui/otp_page/phone_auth.dart';
+
 import 'package:home_advisor/ui/otp_page/signin.dart';
 import 'package:home_advisor/ui/start_page.dart';
 import 'package:home_advisor/ui/sub_category/sub_categ_view.dart';
+import 'package:home_advisor/ui/pay_milestone/pay_milestone_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         SubCategView.id: (context) => SubCategView(),
         OtpPage.id: (context) => OtpPage(),
         LoginView.id: (context) => LoginView(),
+        PayMilestonePage.id: (context) => PayMilestonePage(),
       },
     );
   }
