@@ -66,6 +66,7 @@ class PayMilestonePage extends StatelessWidget {
                 elevation: 1,
               ),
               body: Container(
+                color: Colors.white,
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
