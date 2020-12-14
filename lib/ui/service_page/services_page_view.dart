@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/services/api_services.dart';
-import 'package:home_advisor/ui/service_page/services_page_view_model.dart';
+import 'services_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/service_tile.dart';
 import 'package:stacked/stacked.dart';
 
@@ -11,8 +11,10 @@ import 'services_page_model.dart';
 
 class ServicesPage extends StatelessWidget {
   final String title;
+  final int subCategId;
   final int categId;
-  ServicesPage({this.categId, this.title});
+  final String name;
+  ServicesPage({this.subCategId, this.title, this.categId, this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class ServicesPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "title",
+                  name,
                   style: AppTextStyles.textStyle(
                       size: 18, fontType: FontType.regular),
                 )
@@ -97,24 +99,35 @@ class ServicesPage extends StatelessWidget {
                     child: model.token != null
                         ? FutureBuilder(
                             future: APIServices.getServices(model.token),
+                            // future: APIServices.getServices(model.token),
                             builder:
                                 (_, AsyncSnapshot<ServicesPageModel> snapshot) {
                               print(snapshot.data);
                               if (snapshot.connectionState ==
                                       ConnectionState.done &&
                                   snapshot.hasData) {
-                                print(snapshot.data.results[1].name);
                                 List<Serve> services = snapshot.data.results;
                                 return StaggeredGridView.countBuilder(
                                   crossAxisCount: 4,
                                   itemCount: services.length,
                                   itemBuilder:
-                                      (BuildContext context, int index) =>
-                                          ServicesTile(
-                                    categoryName: services[index].name,
-                                    url: services[index].icon,
-                                    onTap: () {},
-                                  ),
+                                      (BuildContext context, int index) {
+                                    if (services[index].subCategory.id ==
+                                            subCategId &&
+                                        services[index]
+                                                .subCategory
+                                                .category
+                                                .id ==
+                                            categId) {
+                                      return ServicesTile(
+                                        categoryName: services[index].name,
+                                        url: services[index].icon,
+                                        onTap: () {},
+                                      );
+                                    } else {
+                                      return SizedBox();
+                                    }
+                                  },
                                   staggeredTileBuilder: (int index) =>
                                       new StaggeredTile.fit(2),
                                   mainAxisSpacing: 15.0,

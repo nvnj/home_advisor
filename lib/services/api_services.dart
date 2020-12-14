@@ -40,8 +40,7 @@ class APIServices {
   }
 
   static Future<ServicesPageModel> getServices(String token) async {
-    final response = await http
-        .get('https://home-advisor-app.herokuapp.com/api/category', headers: {
+    final response = await http.get('${URLS.baseURL}service', headers: {
       'Content-Type': 'application/json',
       'Authorization': "Bearer $token",
     });

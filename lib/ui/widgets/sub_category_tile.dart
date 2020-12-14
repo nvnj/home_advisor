@@ -8,7 +8,9 @@ import 'package:home_advisor/ui/service_page/services_page_view.dart';
 class SubCategoryTile extends StatelessWidget {
   final String name;
   final String address;
-  SubCategoryTile({this.name, this.address});
+  final int id;
+  final int categId;
+  SubCategoryTile({this.name, this.address, this.id, this.categId});
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(
@@ -29,7 +31,11 @@ class SubCategoryTile extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ServicesPage(),
+                builder: (context) => ServicesPage(
+                  name: name,
+                  subCategId: id,
+                  categId: categId,
+                ),
               ),
             );
           },

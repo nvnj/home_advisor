@@ -116,6 +116,8 @@ class SubCategView extends StatelessWidget {
                                     if (categories[index].category.id ==
                                         categId) {
                                       return SubCategoryTile(
+                                        categId: categId,
+                                        id: categories[index].id,
                                         name: categories[index].name,
                                         address: categories[index].icon,
                                       );
