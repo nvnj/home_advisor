@@ -94,21 +94,23 @@ class Profile extends StatelessWidget {
                               borderRadius: BorderRadius.circular(5.0),
                               color: Colors.white),
                           margin: EdgeInsets.all(20.0.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  '${model.email}',
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    '${model.email}',
+                                  ),
                                 ),
-                              ),
-                              Divider(
-                                height: 1.h,
-                              ),
-                              ListTile(
-                                title: Text('${model.phn}'),
-                              ),
-                            ],
+                                Divider(
+                                  height: 1.h,
+                                ),
+                                ListTile(
+                                  title: Text('${model.phn}'),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(
