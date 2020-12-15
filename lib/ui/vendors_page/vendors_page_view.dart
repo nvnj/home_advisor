@@ -118,6 +118,7 @@ class VendorsPage extends StatelessWidget {
                       height: 10,
                     ),
                     ListView.builder(
+                      primary: false,
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
                         return VendorsCard(

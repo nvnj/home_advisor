@@ -103,7 +103,6 @@ class ServicesPage extends StatelessWidget {
                             // future: APIServices.getServices(model.token),
                             builder:
                                 (_, AsyncSnapshot<ServicesPageModel> snapshot) {
-                              print(snapshot.data);
                               if (snapshot.connectionState ==
                                       ConnectionState.done &&
                                   snapshot.hasData) {

@@ -6,7 +6,7 @@ import 'package:home_advisor/ui/sub_category/sub_categ_model.dart';
 import 'package:http/http.dart' as http;
 
 class URLS {
-  static const String baseURL = 'https://home-advisor-app.herokuapp.com/api/';
+  static const String baseURL = 'http://13.233.219.30/api/';
 }
 
 class APIServices {

@@ -12,7 +12,6 @@ class AuthService {
           if (snapshot.hasData) {
             return HomePageView();
           } else {
-            print("hellogjkhjkhjkkkkkhhhhhhhhhhhhhhhhhhhhhh");
             return SignInPage();
           }
         });

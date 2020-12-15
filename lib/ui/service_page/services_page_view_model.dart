@@ -10,7 +10,6 @@ class ServicesPageViewModel extends BaseViewModel {
     var response = await _authService.firebaseAuth.currentUser.getIdToken();
     if (response != null) {
       token = response;
-      print(token);
       notifyListeners();
     }
   }

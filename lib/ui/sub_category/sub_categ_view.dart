@@ -103,7 +103,6 @@ class SubCategView extends StatelessWidget {
                               if (snapshot.connectionState ==
                                       ConnectionState.done &&
                                   snapshot.hasData) {
-                                print(snapshot.data.results[1].name);
                                 List<SubCateg> categories =
                                     snapshot.data.results;
                                 return GridView.count(

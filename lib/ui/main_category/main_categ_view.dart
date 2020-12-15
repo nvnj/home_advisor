@@ -64,7 +64,6 @@ class MainCategView extends StatelessWidget {
                               if (snapshot.connectionState ==
                                       ConnectionState.done &&
                                   snapshot.hasData) {
-                                print(snapshot.data.toString());
                                 List<MainCategory> categories =
                                     snapshot.data.results;
                                 return GridView.count(
@@ -83,10 +82,9 @@ class MainCategView extends StatelessWidget {
                                   }),
                                 );
                               } else {
-                                print(
-                                    "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                                 return Center(
-                                    child: CircularProgressIndicator(),);
+                                  child: CircularProgressIndicator(),
+                                );
                               }
                             },
                           )

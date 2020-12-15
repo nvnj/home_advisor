@@ -53,9 +53,12 @@ class SubCategoryTile extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Image.asset(
-                      address,
-                      color: AppColor.blCommon,
+                    Container(
+                      width: 100.w,
+                      child: Image.network(
+                        address,
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ],
                 ),

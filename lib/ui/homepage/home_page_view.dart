@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:stacked/stacked.dart';
-
+import 'package:flutter_screenutil/screenutil.dart';
 import 'home_page_viewmodel.dart';
 
 class HomePageView extends StatelessWidget {
   static const id = "HomePage";
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: false);
     return ViewModelBuilder<HomePageViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
         body: model.getViewForIndex(model.currentIndex),
