@@ -31,7 +31,8 @@ class HomePageView extends StatelessWidget {
               type: BottomNavigationBarType.fixed,
               elevation: 0,
               unselectedItemColor: Colors.white,
-              selectedItemColor: Colors.blue,
+              selectedItemColor: Colors.white,
+              selectedFontSize: 16,
               selectedIconTheme: IconThemeData(color: Colors.white),
               items: [
                 BottomNavigationBarItem(
