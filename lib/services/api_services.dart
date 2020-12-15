@@ -19,7 +19,6 @@ class APIServices {
     if (response.statusCode == 200) {
       return MainCategResponse.fromJson(jsonDecode(response.body));
     } else {
-      print(" hi nidhin");
       return null;
     }
   }
@@ -34,7 +33,6 @@ class APIServices {
       print(response.statusCode);
       return SubCategModel.fromJson(jsonDecode(response.body));
     } else {
-      print(" hi nidhin");
       return null;
     }
   }
@@ -49,7 +47,6 @@ class APIServices {
       print(response.statusCode);
       return ServicesPageModel.fromJson(jsonDecode(response.body));
     } else {
-      print(" hi nidhin");
       return null;
     }
   }

@@ -13,6 +13,7 @@ import 'package:home_advisor/ui/otp_page/signin.dart';
 import 'package:home_advisor/ui/start_page.dart';
 import 'package:home_advisor/ui/sub_category/sub_categ_view.dart';
 import 'package:home_advisor/ui/pay_milestone/pay_milestone_view.dart';
+import 'package:home_advisor/ui/vendors_page/vendors_page_view.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         OtpPage.id: (context) => OtpPage(),
         LoginView.id: (context) => LoginView(),
         PayMilestonePage.id: (context) => PayMilestonePage(),
+        VendorsPage.id: (context) => VendorsPage(),
       },
     );
   }

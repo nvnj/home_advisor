@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/app_theme/screen_util-extension.dart';
+import 'package:home_advisor/ui/vendors_page/vendors_page_view.dart';
 
 class OrdersCard extends StatelessWidget {
   final String seriel;
@@ -64,10 +65,15 @@ class OrdersCard extends StatelessWidget {
                     style: AppTextStyles.textStyle(
                         color: AppColor.blCommon, fontType: FontType.bold),
                   ),
-                  Text(
-                    "View vendors",
-                    style: AppTextStyles.textStyle(
-                        color: AppColor.blCommon, fontType: FontType.bold),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, VendorsPage.id);
+                    },
+                    child: Text(
+                      "View vendors",
+                      style: AppTextStyles.textStyle(
+                          color: AppColor.blCommon, fontType: FontType.bold),
+                    ),
                   )
                 ],
               )
