@@ -7,8 +7,8 @@ class QueestionTextFieldViewModel extends BaseViewModel {
   TextEditingController get getController => controller;
 
   @override
-  void dispose(){
+  void dispose() {
     controller.dispose();
-    super.dispose()
+    super.dispose();
   }
 }
