@@ -7,6 +7,7 @@ import 'package:stacked/stacked.dart';
 
 import '../profile_edit/profile_edit.dart';
 import 'profile_viewmodel.dart';
+import 'package:home_advisor/ui/notification_page/notification_page_view.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -139,7 +140,13 @@ class Profile extends StatelessWidget {
                                 Divider(
                                   height: 1.h,
                                 ),
-                                ListTile(title: Text('Notifications')),
+                                GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, NotificationPage.id);
+                                    },
+                                    child:
+                                        ListTile(title: Text('Notifications'))),
                                 Divider(
                                   height: 1.h,
                                 ),
