@@ -86,7 +86,7 @@ class MainCategView extends StatelessWidget {
                                 print(
                                     "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                                 return Center(
-                                    child: CircularProgressIndicator());
+                                    child: CircularProgressIndicator(),);
                               }
                             },
                           )

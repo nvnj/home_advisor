@@ -3,6 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/services/api_services.dart';
+import 'package:home_advisor/ui/survey_page/survey_page.dart';
 import 'services_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/service_tile.dart';
 import 'package:stacked/stacked.dart';
@@ -122,7 +123,17 @@ class ServicesPage extends StatelessWidget {
                                       return ServicesTile(
                                         categoryName: services[index].name,
                                         url: services[index].icon,
-                                        onTap: () {},
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => SurveyPage(
+                                                appBarName:
+                                                    services[index].name,
+                                              ),
+                                            ),
+                                          );
+                                        },
                                       );
                                     } else {
                                       return SizedBox();
