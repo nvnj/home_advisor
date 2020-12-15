@@ -33,9 +33,12 @@ class ServicesTile extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(
-              image: CachedNetworkImageProvider(
-                "${url}",
+            Container(
+              width: 180,
+              child: Image(
+                image: CachedNetworkImageProvider(
+                  "${url}",
+                ),
               ),
             ),
             SizedBox(height: 10),

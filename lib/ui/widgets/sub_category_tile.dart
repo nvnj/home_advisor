@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/ui/service_page/services_page_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class SubCategoryTile extends StatelessWidget {
   final String name;
@@ -54,12 +55,13 @@ class SubCategoryTile extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      width: 100.w,
-                      child: Image.network(
-                        address,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
+                        width: 100.w,
+                        child: Image(
+                          fit: BoxFit.fill,
+                          image: CachedNetworkImageProvider(
+                            address,
+                          ),
+                        )),
                   ],
                 ),
               ],
