@@ -6,11 +6,12 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'locationdate_view_model.dart';
 import 'gridtiles.dart';
 
-class LocationDate extends StatelessWidget {
+class LocationDatePage extends StatelessWidget {
+  static const String id = "LocationDatePage";
   @override
   Widget build(BuildContext context) {
     var location;
-    return ViewModelBuilder<LocationDateViewModel>.reactive(
+    return ViewModelBuilder<LocationDatePageViewModel>.reactive(
         builder: (context, model, child) => Scaffold(
               appBar: AppBar(
                 toolbarHeight: 66,
@@ -52,13 +53,17 @@ class LocationDate extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 60,),
+                      SizedBox(
+                        height: 60,
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "Location and Date, Time",
-                          style: AppTextStyles.textStyle(color: Colors.white,
-                              size: 20, fontType: FontType.regular),
+                          style: AppTextStyles.textStyle(
+                              color: Colors.white,
+                              size: 20,
+                              fontType: FontType.regular),
                         ),
                       ),
                     ],
@@ -142,17 +147,21 @@ class LocationDate extends StatelessWidget {
                         height: 350.0,
                         child: GridView.builder(
                           itemCount: 8,
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              mainAxisSpacing: 20.0,
-                              crossAxisSpacing: 20.0,
-                            childAspectRatio: 5/2.5,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 20.0,
+                            crossAxisSpacing: 20.0,
+                            childAspectRatio: 5 / 2.5,
                           ),
-
                           itemBuilder: (context, index) => GestureDetector(
-                            onTap: (){model.selectedP(index);},
-                            child:GridViewItem(model.time[index],model.selected.contains(model.time[index]),true)
-                          ),
+                              onTap: () {
+                                model.selectedP(index);
+                              },
+                              child: GridViewItem(
+                                  model.time[index],
+                                  model.selected.contains(model.time[index]),
+                                  true)),
                         ),
                       ),
                     ),
@@ -187,6 +196,6 @@ class LocationDate extends StatelessWidget {
                 ),
               ),
             ),
-        viewModelBuilder: ()=>LocationDateViewModel());
+        viewModelBuilder: () => LocationDatePageViewModel());
   }
 }

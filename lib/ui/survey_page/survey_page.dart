@@ -5,6 +5,7 @@ import 'package:home_advisor/ui/survey_page/survey_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/question_widget/question_text_field_widget.dart';
 import 'package:home_advisor/ui/widgets/question_widget/question_widget.dart';
 import 'package:stacked/stacked.dart';
+import 'package:home_advisor/ui/locationdate/locationdate_view.dart';
 
 class SurveyPage extends StatelessWidget {
   final String appBarName;
@@ -108,7 +109,9 @@ class SurveyPage extends StatelessWidget {
                     ),
                     height: 50,
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, LocationDatePage.id);
+                      },
                       child: Text(
                         "Submit",
                         style: TextStyle(fontSize: 20),
