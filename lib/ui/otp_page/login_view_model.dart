@@ -107,15 +107,16 @@ class LoginViewModel extends BaseViewModel {
   String getButtonText() {
     switch (currentStep) {
       case PhoneAuthenticationSteps.INIT:
-      case PhoneAuthenticationSteps.AUTO_RETRIVAL_TIMEOUT:
-      case PhoneAuthenticationSteps.AUTHENTICATION_FAILED:
-      case PhoneAuthenticationSteps.AUTHENTICATION_FAILED_NETWWORK:
       case PhoneAuthenticationSteps.AUTO_RETRIEVING_CODE:
         return "SUBMIT";
-      case PhoneAuthenticationSteps.INVALID_OTP_ENTERED:
       case PhoneAuthenticationSteps.CODE_SENT:
       case PhoneAuthenticationSteps.AUTHENTICATION_SUCCESS:
         return "CONFIRM";
+      case PhoneAuthenticationSteps.AUTHENTICATION_FAILED_NETWWORK:
+      case PhoneAuthenticationSteps.AUTO_RETRIVAL_TIMEOUT:
+      case PhoneAuthenticationSteps.INVALID_OTP_ENTERED:
+      case PhoneAuthenticationSteps.AUTHENTICATION_FAILED:
+        return "RESEND OTP";
     }
     return "SUBMIT";
   }
