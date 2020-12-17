@@ -89,6 +89,11 @@ class LoginViewModel extends BaseViewModel {
     _authService.validatePhoneOtp(otp);
   }
 
+  void resentOtp() {
+    _currentStep = PhoneAuthenticationSteps.INIT;
+    validatePhone();
+  }
+
   String getHeaderText() {
     switch (currentStep) {
       case PhoneAuthenticationSteps.INIT:

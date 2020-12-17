@@ -31,13 +31,14 @@ class ServicesTile extends StatelessWidget {
           ],
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: 180,
+              width: 120,
               child: Image(
                 image: CachedNetworkImageProvider(
-                  "${url}",
+                  url,
                 ),
               ),
             ),
@@ -48,9 +49,9 @@ class ServicesTile extends StatelessWidget {
                 vertical: 10,
               ),
               child: Text(
-                "${categoryName}",
+                categoryName,
                 style: AppTextStyles.textStyle(
-                  fontType: FontType.bold,
+                  fontType: FontType.regular,
                   color: AppColor.blCommon,
                   size: 18,
                 ),
