@@ -7,7 +7,7 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:stacked/stacked.dart';
 
 class LoginViewModel extends BaseViewModel {
-  bool codeSent = false;
+  bool inkwellButton = false;
   AuthService _authService = locator<FirebaseAuthService>();
 
   PhoneAuthenticationSteps _currentStep = PhoneAuthenticationSteps.INIT;
@@ -112,12 +112,19 @@ class LoginViewModel extends BaseViewModel {
       case PhoneAuthenticationSteps.AUTHENTICATION_FAILED:
       case PhoneAuthenticationSteps.AUTHENTICATION_FAILED_NETWWORK:
       case PhoneAuthenticationSteps.AUTO_RETRIEVING_CODE:
-        return "SUBMIT";
+        {
+          inkwellButton = false;
+          return "SUBMIT";
+        }
       case PhoneAuthenticationSteps.INVALID_OTP_ENTERED:
       case PhoneAuthenticationSteps.CODE_SENT:
       case PhoneAuthenticationSteps.AUTHENTICATION_SUCCESS:
-        return "CONFIRM";
+        {
+          inkwellButton = true;
+          return "CONFIRM";
+        }
     }
+    inkwellButton = false;
     return "SUBMIT";
   }
 

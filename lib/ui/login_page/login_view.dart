@@ -62,7 +62,6 @@ class _Body extends ViewModelWidget<LoginViewModel> {
                   child: FlatButton(
                     onPressed: () {
                       if (model.isMobileNoValid) {
-                        model.codeSent = true;
                         model.buttonAction(context);
                       }
                     },
@@ -77,7 +76,7 @@ class _Body extends ViewModelWidget<LoginViewModel> {
             SizedBox(
               height: 30,
             ),
-            model.codeSent
+            model.inkwellButton
                 ? Center(
                     child: InkWell(
                         onTap: () {
