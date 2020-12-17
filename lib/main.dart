@@ -6,10 +6,8 @@ import 'package:home_advisor/app/locator.dart';
 import 'package:home_advisor/ui/complete_profile/complete_profile_view.dart';
 import 'package:home_advisor/ui/homepage/home_page_view.dart';
 import 'package:home_advisor/ui/intro_slider/intro_page_view.dart';
-import 'package:home_advisor/ui/otp_page/login_view.dart';
-import 'package:home_advisor/ui/otp_page/otp.dart';
+import 'package:home_advisor/ui/login_page/login_view.dart';
 
-import 'package:home_advisor/ui/otp_page/signin.dart';
 import 'package:home_advisor/ui/start_page.dart';
 import 'package:home_advisor/ui/sub_category/sub_categ_view.dart';
 import 'package:home_advisor/ui/pay_milestone/pay_milestone_view.dart';
@@ -34,11 +32,9 @@ class MyApp extends StatelessWidget {
       routes: {
         StartPage.id: (context) => StartPage(),
         IntroPage.id: (context) => IntroPage(),
-        SignInPage.id: (context) => SignInPage(),
         CompleteProfile.id: (context) => CompleteProfile(),
         HomePageView.id: (context) => HomePageView(),
         SubCategView.id: (context) => SubCategView(),
-        OtpPage.id: (context) => OtpPage(),
         LoginView.id: (context) => LoginView(),
         PayMilestonePage.id: (context) => PayMilestonePage(),
         VendorsPage.id: (context) => VendorsPage(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/screen_util-extension.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
-import 'package:home_advisor/ui/otp_page/login_view_model.dart';
+import 'package:home_advisor/ui/login_page/login_view_model.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stacked/stacked.dart';
@@ -61,7 +61,10 @@ class _Body extends ViewModelWidget<LoginViewModel> {
                   height: 100.h,
                   child: FlatButton(
                     onPressed: () {
-                      if (model.isMobileNoValid) model.buttonAction(context);
+                      if (model.isMobileNoValid) {
+                        model.codeSent = true;
+                        model.buttonAction(context);
+                      }
                     },
                     child: Text(
                       model.getButtonText(),
@@ -70,7 +73,22 @@ class _Body extends ViewModelWidget<LoginViewModel> {
                   ),
                 ),
               ],
-            )
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            model.codeSent
+                ? Center(
+                    child: InkWell(
+                        onTap: () {
+                          model.validatePhone();
+                        },
+                        child: Text(
+                          "Resend OTP",
+                          style:
+                              AppTextStyles.textStyle(color: AppColor.blCommon),
+                        )))
+                : SizedBox()
           ],
         ),
       ),
