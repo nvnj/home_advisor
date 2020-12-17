@@ -49,26 +49,33 @@ class SurveyPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  appBarName,
-                  style: AppTextStyles.textStyle(
-                    size: 18,
-                    fontType: FontType.regular,
-                  ),
-                )
               ],
             ),
             flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    AppColor.blGradient2,
-                    AppColor.blGradient1,
-                  ],
-                ),
+              height: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.056,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      appBarName,
+                      style: AppTextStyles.textStyle(
+                          color: Colors.white,
+                          size: 20,
+                          fontType: FontType.regular),
+                    ),
+                  ),
+                ],
               ),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [AppColor.blGradient2, AppColor.blGradient1])),
             ),
             elevation: 1,
           ),
