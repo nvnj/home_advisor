@@ -80,7 +80,7 @@ class _Body extends ViewModelWidget<LoginViewModel> {
                 ? Center(
                     child: InkWell(
                         onTap: () {
-                          model.resentOtp();
+                          model.validatePhone();
                         },
                         child: Text(
                           "Resend OTP",

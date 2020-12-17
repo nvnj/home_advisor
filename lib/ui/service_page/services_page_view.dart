@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/services/api_services.dart';
@@ -121,15 +121,18 @@ class ServicesPage extends StatelessWidget {
                                       ConnectionState.done &&
                                   snapshot.hasData) {
                                 List<Serve> services = snapshot.data.results;
-                                return Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: GridView.count(
-                                    childAspectRatio: (11 / 12),
-                                    crossAxisSpacing: 10,
-                                    mainAxisSpacing: 20,
-                                    crossAxisCount: 2,
-                                    children:
-                                        List.generate(services.length, (index) {
+                                return StaggeredGridView.countBuilder(
+                                  crossAxisCount: 4,
+                                  itemCount: services.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    if (services[index].subCategory.id ==
+                                            subCategId &&
+                                        services[index]
+                                                .subCategory
+                                                .category
+                                                .id ==
+                                            categId) {
                                       return ServicesTile(
                                         categoryName: services[index].name,
                                         url: services[index].icon,
@@ -145,8 +148,14 @@ class ServicesPage extends StatelessWidget {
                                           );
                                         },
                                       );
-                                    }),
-                                  ),
+                                    } else {
+                                      return SizedBox();
+                                    }
+                                  },
+                                  staggeredTileBuilder: (int index) =>
+                                      new StaggeredTile.fit(2),
+                                  mainAxisSpacing: 15.0,
+                                  crossAxisSpacing: 15.0,
                                 );
                               } else {
                                 return Center(
