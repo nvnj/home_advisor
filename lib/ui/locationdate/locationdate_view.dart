@@ -81,6 +81,7 @@ class LocationDatePage extends StatelessWidget {
                 elevation: 1,
               ),
               body: SingleChildScrollView(
+                primary: true,
                 child: Container(
                   color: Colors.white,
                   child: Column(
@@ -148,6 +149,7 @@ class LocationDatePage extends StatelessWidget {
                         child: SizedBox(
                           height: 220.0,
                           child: GridView.builder(
+                            primary: false,
                             itemCount: 8,
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
