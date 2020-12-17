@@ -61,7 +61,7 @@ class SubCategView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 40,
+                    height: MediaQuery.of(context).size.height * 0.056,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
