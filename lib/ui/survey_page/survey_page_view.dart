@@ -5,6 +5,7 @@ import 'package:home_advisor/ui/survey_page/survey_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/question_widget/question_text_field_widget.dart';
 import 'package:home_advisor/ui/widgets/question_widget/question_widget.dart';
 import 'package:stacked/stacked.dart';
+import 'package:home_advisor/ui/locationdate/locationdate_view.dart';
 
 class SurveyPage extends StatelessWidget {
   final String appBarName;
@@ -48,26 +49,33 @@ class SurveyPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  appBarName,
-                  style: AppTextStyles.textStyle(
-                    size: 18,
-                    fontType: FontType.regular,
-                  ),
-                )
               ],
             ),
             flexibleSpace: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    AppColor.blGradient2,
-                    AppColor.blGradient1,
-                  ],
-                ),
+              height: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.056,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      appBarName,
+                      style: AppTextStyles.textStyle(
+                          color: Colors.white,
+                          size: 20,
+                          fontType: FontType.regular),
+                    ),
+                  ),
+                ],
               ),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [AppColor.blGradient2, AppColor.blGradient1])),
             ),
             elevation: 1,
           ),
@@ -108,7 +116,9 @@ class SurveyPage extends StatelessWidget {
                     ),
                     height: 50,
                     child: FlatButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, LocationDatePage.id);
+                      },
                       child: Text(
                         "Submit",
                         style: TextStyle(fontSize: 20),

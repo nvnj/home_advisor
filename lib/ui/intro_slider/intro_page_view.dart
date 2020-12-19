@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 import 'package:home_advisor/ui/intro_slider/intro_slider_viewmodel.dart';
-import 'package:home_advisor/ui/otp_page/login_view.dart';
+import 'package:home_advisor/ui/login_page/login_view.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:stacked/stacked.dart';
 

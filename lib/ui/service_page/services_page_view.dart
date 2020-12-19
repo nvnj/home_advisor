@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_advisor/app_theme/app_colors.dart';
 import 'package:home_advisor/app_theme/text_styles.dart';
 import 'package:home_advisor/services/api_services.dart';
-import 'package:home_advisor/ui/survey_page/survey_page.dart';
+import 'package:home_advisor/ui/survey_page/survey_page_view.dart';
 import 'services_page_view_model.dart';
 import 'package:home_advisor/ui/widgets/service_tile.dart';
 import 'package:stacked/stacked.dart';
@@ -55,14 +55,28 @@ class ServicesPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  name,
-                  style: AppTextStyles.textStyle(
-                      size: 18, fontType: FontType.regular),
-                )
               ],
             ),
             flexibleSpace: Container(
+              height: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.056,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      name,
+                      style: AppTextStyles.textStyle(
+                          color: Colors.white,
+                          size: 20,
+                          fontType: FontType.regular),
+                    ),
+                  ),
+                ],
+              ),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.centerLeft,

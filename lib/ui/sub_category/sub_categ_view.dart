@@ -53,14 +53,28 @@ class SubCategView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Text(
-                  title,
-                  style: AppTextStyles.textStyle(
-                      size: 18, fontType: FontType.regular),
-                )
               ],
             ),
             flexibleSpace: Container(
+              height: double.maxFinite,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.056,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      title,
+                      style: AppTextStyles.textStyle(
+                          color: Colors.white,
+                          size: 20,
+                          fontType: FontType.regular),
+                    ),
+                  ),
+                ],
+              ),
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.centerLeft,
